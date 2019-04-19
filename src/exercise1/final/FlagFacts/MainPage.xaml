@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FlagFacts"
+             xmlns:eff="clr-namespace:FlagFacts.Effects"
+             x:Class="FlagFacts.MainPage"
+             Title="Fun with Flags">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Previous"
+                     Clicked="OnPrevious" Icon="ic_arrow_drop_up_black.png" />
+        <ToolbarItem Text="Next" 
+                     Clicked="OnNext" Icon="ic_arrow_drop_down_black.png" />
+        <ToolbarItem Text="Show" 
+                     Clicked="OnShow" Icon="ic_action_search.png" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Spacing="10">
+            <StackLayout.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="5,20,5,5" />
+                    <On Platform="Android" Value="5,0,5,5" />
+                    <On Platform="UWP" Value="10" />
+                </OnPlatform>
+            </StackLayout.Padding>
+
+            <Image x:Name="flagImage" HeightRequest="200" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Aspect="AspectFit" />
+
+            <Picker x:Name="country" SelectedItem="{Binding Country}" />
+
+            <Label Text="Current Design was Adopted on" FontAttributes="Bold" />
+            <DatePicker x:Name="adopted" MinimumDate="01/01/1700" HorizontalOptions="Start" 
+                        Date="{Binding DateAdopted}" />
+
+            <Label Text="Has Shield" FontAttributes="Bold" />
+            <Switch x:Name="hasShield" IsToggled="{Binding IncludesShield}" />
+
+            <Label Text="Fun Fact" FontAttributes="Bold" />
+            <Label x:Name="description" Text="{Binding Description}" />
+
+            <Label x:Name="moreInfo" Text="More Information" Margin="0,0,10,0"
+                    TextColor="Blue" HorizontalOptions="End">
+                <Label.Effects>
+                    <eff:UnderlineEffect />
+                </Label.Effects>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMoreInformation" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
