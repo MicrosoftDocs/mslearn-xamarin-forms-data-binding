@@ -1,3 +1,7 @@
+# Microsoft Learn: Separate your UI and code with Xamarin.Forms data binding
+
+[//]: # (TODO: Link back to Microsoft Learn module.)
+This project contains the source code for the **Separate your UI and code with Xamarin.Forms data binding** Microsoft Learn module.
 
 # Contributing
 
